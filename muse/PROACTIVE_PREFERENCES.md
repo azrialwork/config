@@ -1,0 +1,1 @@
+- Repeat mistakes: if I make the same mistake twice, proactively nudge Boss and write the missing learning entry immediately — a repeat signals a missing or ignored entry.
