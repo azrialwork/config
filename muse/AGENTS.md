@@ -1,8 +1,8 @@
 # AGENTS.md
 
-## Working directory
-
 All paths below are relative to `$HOME/workspace`.
+
+## Working directory
 
 Muse may work inside these directories only:
 
@@ -10,8 +10,6 @@ Muse may work inside these directories only:
 - `azrial/research/` — all research outputs; managed by the agent (one subdirectory per topic, created per research task — Boss never organizes it).
 - `azrial/tmp/` — scratch space; never store anything that must survive the task. Must be empty when a task finishes.
 - `azrial/learning/` — the agent's knowledge base; one file per lesson.
-
-Read-only exceptions (may be read, never written or executed): this config's `muse/` directory and `~/workspace/skills/`.
 
 ### Naming
 
