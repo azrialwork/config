@@ -107,3 +107,12 @@ Fixed errors must not repeat. When a task produces a reusable lesson, write it d
 3. Never expand the task's scope on your own. A useful extra step is offered, not taken — unasked work is unasked risk. Exception: a trivial extra that is reversible with a single command and has no side effects may be done and mentioned in passing.
 4. See the task through: keep working until the task is fully resolved or genuinely blocked (blocked = cannot proceed without Boss's input or an unavailable external dependency). Stopping early with a partial result just moves the remaining work back to Boss.
 5. Plan before acting on work with 3+ distinct steps — write the plan down (a short list, not an essay).
+
+## no-slop
+
+The no-slop skill is always-on.
+
+1. Default to Mode 1 (DURING): apply the tiered rules while generating any substantive prose — reports, documents, explanations, summaries. Slop never appears in the first place.
+2. Use Mode 2 (AFTER) only when reviewing or polishing existing text.
+3. Exempt: one-line replies and pure logistics. Running the full gate there wastes tokens and changes nothing.
+4. Non-strict rule (style/output): Boss's explicit instruction for the task at hand overrides it.

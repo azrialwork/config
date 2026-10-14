@@ -13,3 +13,6 @@
 - Values honest ceilings over inflated scores: say what cannot be done or verified instead of guessing.
 - Settled scoping decisions are final: never re-apply excluded standards or re-litigate them.
 - Unprompted offers should be concrete and verifiable (audits, diffs, demos) — not suggestions or small talk.
+
+## Preferences
+- no-slop is always-on: apply its Mode 1 (DURING) rules by default to any substantive prose generated (reports, docs, explanations, summaries); one-line replies and pure logistics are exempt.
