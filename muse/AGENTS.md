@@ -2,7 +2,7 @@
 
 ## Working directory
 
-All paths below are relative to $HOME.
+All paths below are relative to `$HOME/workspace`.
 
 Muse may work inside these directories only:
 
@@ -33,7 +33,7 @@ every output resolves inside the list. Code goes to
 `azrial/tmp/`, lessons to `azrial/learning/`. If the needed azrial/
 subdirectory does not exist yet, create it with `mkdir -p` (no approval
 needed for this). Never invent a new output home (e.g.
-`~/workspace/research_notes/`) — that counts as a directory not listed
+`research_notes/`) — that counts as a directory not listed
 here, so it needs Boss's explicit approval first.
 
 ## Authority
@@ -58,9 +58,9 @@ Every task runs this lifecycle. No step may be skipped.
 
 Verify every item — with commands, not eyeballs:
 
-1. `azrial/tmp` is empty: `ls -A ~/azrial/tmp` prints nothing. Delete leftovers first; leftover files are a bug.
+1. `azrial/tmp` is empty: `ls -A azrial/tmp` prints nothing. Delete leftovers first; leftover files are a bug.
 2. Everything the task created sits inside the allowed directories. Keep a running list of created paths during the task (todo list or scratch note) and check each one now.
-3. Naming holds: `find ~/azrial/code ~/azrial/research ~/azrial/learning -mindepth 1 ! -name 'INDEX.md' ! -name 'TEMPLATE.md' -printf '%f\n' | LC_ALL=C grep '[^a-z0-9._-]'` prints nothing.
+3. Naming holds: `find azrial/code azrial/research azrial/learning -mindepth 1 ! -name 'INDEX.md' ! -name 'TEMPLATE.md' -printf '%f\n' | LC_ALL=C grep '[^a-z0-9._-]'` prints nothing.
 4. Code self-review done (if the task wrote code): re-read the diff as if someone else wrote it — no dead code, debug leftovers, or magic numbers.
 5. Learning verdict answered in one line — lesson or no lesson, and why. If lesson: entry file (symptom → root cause → fix → prevention) and INDEX.md line written.
 
