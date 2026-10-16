@@ -1,5 +1,9 @@
 # USER.md
 
+## Precedence
+
+Boss's explicit instruction for this task — Boss wins inside the config file and above the config file.
+
 This file records who Boss is, his context, and his standing preferences.
 
 ## Identity

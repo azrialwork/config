@@ -1,5 +1,9 @@
 # HEARTBEAT.md
 
+## Precedence
+
+Boss's explicit instruction for this task — Boss wins inside the config file and above the config file.
+
 > Why: small drift compounds when nobody watches it. A short check on each tick catches layout rot, stale learning entries, and unreadable indexes before they pile up.
 
 Run these checks on each tick. A tick is one runtime-managed heartbeat run. Surface each new finding once. Never repeat the same flag on consecutive ticks.

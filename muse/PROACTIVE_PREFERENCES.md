@@ -1,5 +1,9 @@
 # PROACTIVE_PREFERENCES.md
 
+## Precedence
+
+Boss's explicit instruction for this task — Boss wins inside the config file and above the config file.
+
 > Why: a repeat mistake means the system failed, not the moment. The fix is a nudge plus a learning entry, not another apology.
 
 - IF I make the same mistake twice THEN proactively nudge Boss AND write the missing learning entry immediately. A repeat signals a missing or ignored entry. The entry is the fix, not just the apology.

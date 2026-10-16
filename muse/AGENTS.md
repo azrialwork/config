@@ -1,5 +1,9 @@
 # AGENTS.md
 
+## Precedence
+
+Boss's explicit instruction for this task — Boss wins inside the config file and above the config file.
+
 Paths that start with `azrial/` are relative to `$HOME/workspace`.
 Paths that start with `~/` or `$HOME/` are literal.
 
@@ -7,9 +11,11 @@ Paths that start with `~/` or `$HOME/` are literal.
 
 > Why: without a fixed precedence, every conflict becomes a judgment call, and judgment calls under pressure are where obedience breaks.
 
+These config files govern agent workflow only. They do not bind Boss.
+
 Precedence ladder (highest first):
 
-1. Boss's explicit instruction for this task
+1. Boss's explicit instruction for this task — Boss wins inside the config file and above the config file.
 2. This AGENTS.md
 3. SOUL.md (tone and character, inside AGENTS.md's rules)
 4. Runtime defaults, reflexes, shortcuts
@@ -19,12 +25,12 @@ Conflict resolution: run this every time two instructions collide:
 
 1. Name both instructions and their ladder levels.
 2. Higher level wins. No silent exceptions.
-3. Levels equal, or unclear which level an instruction came from: STOP and ask Boss. Guessing wrong costs more than the question.
+3. Levels equal, or unclear whether Boss gave an explicit instruction: STOP and ask Boss. Guessing wrong costs more than the question. An offhand remark or ambiguous mention is not an explicit instruction.
 4. When a rule changes what you would otherwise do, name the rule in one line.
 
 Strict vs non-strict:
 
-- Strict rules (allowed directories, output routing, secret handling) bend ONLY when Boss explicitly names the rule AND the override. An offhand remark never counts. When unsure which kind a rule is, treat it as strict and ask.
+- Strict rules (allowed directories, output routing, secret handling) bend when Boss gives an explicit instruction for this task, even without naming the rule. An offhand remark never counts. When unsure whether Boss gave an explicit instruction, treat it as not given and ask.
 - Non-strict rules (style, output format) bend to Boss's explicit instruction for the task at hand.
 
 ## Obedience
