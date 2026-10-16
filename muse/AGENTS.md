@@ -60,7 +60,7 @@ Read-only exceptions: the agent may READ, never write, outside the allowed direc
 > Why: consistent names are how future-you finds things without thinking. Thinking is the expensive part.
 
 - Lowercase kebab-case for every directory and file name: `my-project`, never `MyProject` or `my project`. Keep names to 2-4 words.
-- Exceptions: the standing config filenames (`AGENTS.md`, `SOUL.md`, `IDENTITY.md`, `USER.md`, `HEARTBEAT.md`, `PROACTIVE_PREFERENCES.md`, `MEMORY.md`, `TOOLS.md`) and standard repo docs (`README.md`, `CHANGELOG.md`, `LICENSE`, `SECURITY.md`, `SKILL.md`, `CONFLICTS.md`, `INDEX.md`, `TEMPLATE.md`) keep their uppercase names by convention.
+- Exceptions: the standing config filenames (`AGENTS.md`, `SOUL.md`, `IDENTITY.md`, `USER.md`, `HEARTBEAT.md`, `PROACTIVE_PREFERENCES.md`, `MEMORY.md`, `TOOLS.md`) and standard repo docs (`README.md`, `CHANGELOG.md`, `LICENSE`, `SECURITY.md`, `SKILL.md`, `CONFLICTS.md`, `INDEX.md`, `TEMPLATE.md`) keep their uppercase names by convention. GitHub-mandated names under `.github/` (`CODEOWNERS`, `ISSUE_TEMPLATE`) keep GitHub's spelling.
 - One project is one subdirectory under `azrial/code/`. One research topic is one subdirectory under `azrial/research/`. Never pile files at the top level of these directories.
 
 ### Boundaries
@@ -98,7 +98,7 @@ Verify with commands, not eyeballs:
 
 - [ ] `azrial/tmp` is empty: `ls -A azrial/tmp` prints nothing. Delete leftovers first. Leftover files are a bug.
 - [ ] Every path the task created sits inside the allowed directories.
-- [ ] Naming holds: `find azrial/code azrial/research azrial/learning -mindepth 1 ! -name 'INDEX.md' ! -name 'TEMPLATE.md' ! -name 'README.md' ! -name 'CHANGELOG.md' ! -name 'LICENSE' ! -name 'SECURITY.md' ! -name 'SKILL.md' ! -name 'CONFLICTS.md' ! -name 'AGENTS.md' ! -name 'SOUL.md' ! -name 'IDENTITY.md' ! -name 'USER.md' ! -name 'HEARTBEAT.md' ! -name 'PROACTIVE_PREFERENCES.md' ! -name 'MEMORY.md' ! -name 'TOOLS.md' -printf '%f\n' | LC_ALL=C grep '[^a-z0-9._-]'` prints nothing.
+- [ ] Naming holds: `find azrial/code azrial/research azrial/learning -mindepth 1 ! -path '*/.git/*' ! -name 'INDEX.md' ! -name 'TEMPLATE.md' ! -name 'README.md' ! -name 'CHANGELOG.md' ! -name 'LICENSE' ! -name 'SECURITY.md' ! -name 'SKILL.md' ! -name 'CONFLICTS.md' ! -name 'AGENTS.md' ! -name 'SOUL.md' ! -name 'IDENTITY.md' ! -name 'USER.md' ! -name 'HEARTBEAT.md' ! -name 'PROACTIVE_PREFERENCES.md' ! -name 'MEMORY.md' ! -name 'TOOLS.md' ! -name 'CODEOWNERS' ! -name 'ISSUE_TEMPLATE' -printf '%f\n' | LC_ALL=C grep '[^a-z0-9._-]'` prints nothing.
 - [ ] Code self-review done (if the task wrote code): re-read the diff as if someone else wrote it. No dead code, debug leftovers, or magic numbers.
 - [ ] Learning verdict answered in one line: lesson or no lesson, and why.
 
