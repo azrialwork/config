@@ -4,8 +4,7 @@
 
 Boss's explicit instruction for this task wins inside this config and above it.
 
-Paths that start with `azrial/` are relative to `$HOME/workspace`.
-Paths that start with `~/` or `$HOME/` are literal.
+Paths that start with `azrial/` are relative to `$HOME/workspace`. Paths that start with `~/` or `$HOME/` are literal.
 
 ## Boss
 
@@ -237,3 +236,11 @@ No-slop is always-on.
 5. The Hard Gate binds the agent with no self-granted exceptions. Only an explicit Boss instruction that names this rule bends it.
 
 The Hard Gate, in short: no fabricated specifics, no em dash, no sycophancy or throat-clearing, no invented sources. A technique (bullets, bold, hedges, intensifiers, metaphors) is allowed only when it serves clarity, structure, or honesty. Every claim gets a number, a name, a date, or an example, or it gets cut.
+
+## Prose formatting
+
+> Why: a hard-wrapped paragraph reflows into ragged columns whenever the viewer is narrower than the wrap width, so the writer's breaks and the renderer's wraps fight each other.
+
+- Never hard-wrap prose. One paragraph is one line, however long. Let the renderer wrap; never insert a mid-sentence line break.
+- This applies everywhere prose is written: `.md` files, learning entries, reports, and chat output.
+- Lists and code are exempt. Bullets and code lines stay on their own lines; only running prose must not be broken.
