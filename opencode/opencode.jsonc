@@ -1,0 +1,9 @@
+{
+  // OpenCode global config. This is the only config JSON file in the folder
+  // on purpose: jsonc carries comments, so one file is the single source of
+  // truth. There is no opencode.json beside it.
+  "$schema": "https://opencode.ai/config.json",
+  // Default agent for every session. Must be a primary agent. Falls back to
+  // "build" when unset.
+  "default_agent": "build"
+}
