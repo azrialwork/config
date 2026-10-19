@@ -1,30 +1,26 @@
-# ---------------------------------------------------------------------------
-# Termux interactive shell
-# ---------------------------------------------------------------------------
+# Termux shell.
+# Prompt: <path> [<branch>] $
 
-# Width budgets, in characters. Chosen so the worst-case prompt stays under
-# 45 columns, which is roughly the width of a phone in portrait.
+# Prompt width caps, in characters.
+# Worst case stays around 36 columns.
 __PROMPT_PATH_MAX=20
 __PROMPT_BRANCH_MAX=10
 
-# ---------------------------------------------------------------------------
-# Cursor
-# ---------------------------------------------------------------------------
-# DECSCUSR 5 = blinking bar. Some apps leave the terminal on a block cursor,
-# so it is re-asserted at startup and again before every prompt.
+# --- cursor ---
+# DECSCUSR 5 = blinking bar.
+# Re-set every prompt: other apps
+# tend to leave it on a block.
 __cursor_bar() {
   printf '\033[5 q'
 }
 
-# ---------------------------------------------------------------------------
-# Prompt: <path> [<branch>] $
-# ---------------------------------------------------------------------------
+# --- prompt ---
 __prompt_status=0
 __prompt_path_text=
 __prompt_branch_text=
 
-# Branch name straight from .git/HEAD, so no git process is started per
-# prompt. Detached HEAD shows the short sha instead. Empty outside a repo.
+# Branch straight from .git/HEAD, no
+# git process. Detached = 7-char sha.
 __prompt_set_branch() {
   local dir=$PWD head
   __prompt_branch_text=
@@ -43,47 +39,72 @@ __prompt_set_branch() {
   done
 }
 
-# $HOME becomes ~. Written as an explicit prefix test rather than
-# ${PWD/#$HOME/~}: the ~ in a substitution's replacement is expanded back
-# to $HOME, which silently turns the whole substitution into a no-op.
-# Long paths collapse to the last directory, since that is the part that
-# tells you where you are.
+# $HOME becomes ~.
+# Do not use ${PWD/#$HOME/~}: the ~ in
+# the replacement expands back to
+# $HOME, so it silently does nothing.
+# Long paths keep the last directory.
 __prompt_set_path() {
-  local path=$PWD base keep=$(( __PROMPT_PATH_MAX - 3 ))
-  [[ $path == "$HOME" || $path == "$HOME"/* ]] && path="~${path#"$HOME"}"
+  local path=$PWD base
+  local keep=$(( __PROMPT_PATH_MAX - 3 ))
+
+  if [[ $path == "$HOME" ]]; then
+    path="~"
+  elif [[ $path == "$HOME"/* ]]; then
+    path="~${path#"$HOME"}"
+  fi
 
   if (( ${#path} > __PROMPT_PATH_MAX )); then
     base=${path##*/}
-    (( ${#base} > keep )) && base="${base:0:keep}…"
+    if (( ${#base} > keep )); then
+      base="${base:0:keep}…"
+    fi
     path="…/${base}"
   fi
 
   __prompt_path_text=$path
 }
 
-# \[ \] mark escape sequences as zero-width so readline counts columns right.
-# \$ renders as $ for a normal user and # for root.
+# \[ \] = zero-width escapes.
+# \$ = $ normally, # as root.
 __prompt_render() {
   __prompt_set_path
   __prompt_set_branch
 
-  local accent=32 branch=$__prompt_branch_text   # green by default
-  (( __prompt_status )) && accent=31   # red when the last command failed
-  (( ${#branch} > __PROMPT_BRANCH_MAX )) &&
-    branch="${branch:0:$(( __PROMPT_BRANCH_MAX - 1 ))}…"
+  local keep=$(( __PROMPT_BRANCH_MAX - 1 ))
+  local accent=32                     # green
+  local branch=$__prompt_branch_text
+
+  # Failed command -> red $.
+  (( __prompt_status )) && accent=31
+
+  if (( ${#branch} > __PROMPT_BRANCH_MAX )); then
+    branch="${branch:0:keep}…"
+  fi
 
   PS1="\[\e[1;33m\]${__prompt_path_text}\[\e[0m\]"
-  [[ -n $branch ]] && PS1+=" \[\e[32m\][${branch}]\[\e[0m\]"
+  [[ -n $branch ]] &&
+    PS1+=" \[\e[32m\][${branch}]\[\e[0m\]"
   PS1+=" \[\e[1;${accent}m\]"
   PS1+='\$'
   PS1+='\[\e[0m\] '
 }
 
-# ---------------------------------------------------------------------------
-# Wiring
-# ---------------------------------------------------------------------------
+# --- wiring ---
 if [[ $- == *i* ]]; then
   __cursor_bar
-  # $? must be captured first; every later command in the chain overwrites it.
-  PROMPT_COMMAND='__prompt_status=$?; __cursor_bar; __prompt_render'
+  # $? must be captured first.
+  PROMPT_COMMAND='__prompt_status=$?; '
+  PROMPT_COMMAND+='__cursor_bar; '
+  PROMPT_COMMAND+='__prompt_render'
 fi
+
+# --- alias ---
+alias l="ls"
+alias ll="ls -a"
+alias ..="cd .."
+alias ...="cd ../.."
+alias oo="opencode --auto"
+alias oc="cd ~/.config/opencode"
+alias r="source ~/.bashrc && clear"
+alias c="r"
