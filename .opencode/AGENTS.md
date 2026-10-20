@@ -6,7 +6,8 @@ Terms used across this file:
 
 - **Boss** is the user; see the User section.
 - **Standing files** are this `AGENTS.md` plus every file under `~/.config/opencode/agent/`. Re-read them when they change.
-- **Memory** is the User section in this file (who Boss is). **Learning** is the record kept under `~/workspace/learning/` (how the work went).
+- **Memory** is the User section in this file (who Boss is). **Learning** is the record kept under `~/workspace/learning/` (how the work went). **Research** is the record kept under `~/workspace/research/` (what was found out).
+- **Language:** deliverables follow the request's language, Indonesian by default. This file and Learning notes stay English.
 
 ## User
 
@@ -47,7 +48,7 @@ Name both colliding instructions and their rung; the higher one wins, with no si
 Before starting:
 
 - Re-read any standing file that changed since you last read it; an injected copy can lag the disk.
-- Scan `~/workspace/learning/INDEX.md`; read only entries relevant to the task, and apply them.
+- Scan `~/workspace/learning/INDEX.md` and `~/workspace/research/INDEX.md`; read only entries relevant to the task, and apply them.
 - Name every output target up front; write each into its proper home from the first write, never move it in later.
 
 Before reporting done, verify with commands, not eyeballs:
@@ -55,8 +56,9 @@ Before reporting done, verify with commands, not eyeballs:
 - Scratch is clean (nothing left in `$PREFIX/tmp` or task temp dirs that should have died with the task).
 - Every created path sits where it belongs.
 - Names follow the naming rule in Code and naming.
+- Records are closed: the Learning line when a lesson qualified, the `~/workspace/research/INDEX.md` line when a research run happened.
 - If you wrote code, re-read the diff as if someone else wrote it: no dead code, no debug leftovers, no magic numbers.
-- State one line in your final report: lesson recorded, or no lesson, and why.
+- State one line in your final report: lesson recorded, or no lesson, and why — plus the research index line when a run happened.
 
 ## Judgment
 
@@ -81,18 +83,26 @@ If you make the same mistake twice, tell Boss and write the missing entry immedi
 ## Code and naming
 
 - All projects live in `~/workspace/code/`, one subdirectory per project; never pile project files at the top level.
-- Lowercase kebab-case for every file and directory you create; 2-4 words.
+- Lowercase kebab-case for every file and directory you create; 2-4 words. Exception: dated record entries carry a `YYYY-MM-DD-` prefix before the slug — Learning files and Research directories.
 - One function does one thing; if its name needs "and", split it.
 - Explicit and simple over clever; comments explain why, never what.
 - Build for today: no speculative features, no just-in-case code.
 - One home per piece of logic; no dead or commented-out code.
 - Write for humans first; code is read far more than written.
 
+## Research
+
+Applies to any research task. A single question with a known answer is not research, and a write-up with no fetched source behind it is a draft, not research output. Cover the topic end to end: definition, how it works, current state as of today, costs, limits, and what would falsify the conclusion. Every contested claim gets at least two independent viewpoints, each with what it argues, who holds it, and the strongest evidence behind it. Primary sources first (official docs, papers, filings, changelogs, raw data, the source repo); secondary sources only to locate or cross-check primaries. Every factual claim carries a URL and the source's publication or last-updated date — say plainly when no date exists, and treat undated claims as weaker. Keep fact, inference, and disagreement in separate sentences, name what is still unknown, and stop when new sources only repeat what you have, stating that saturation point in the report.
+
+Output lives in `~/workspace/research/<YYYY-MM-DD-topic-slug>/`: the date prefix, then a lowercase kebab-case slug of 2-4 words naming the subject, not the date. Inside it, `report.md` is the minimum, `sources.md` joins it when the citation list would bloat the report, and part files use `part-<slug>.md` without repeating the date. `web/` holds the browsable artifact: `index.html` plus its `.css` and `.js`, self-contained and usable by opening the file offline, no hard CDN dependency; a short report may ship one `index.html` with inline CSS. `report.md` is the source of truth and `web/` renders it, so both carry the same source URLs with dates and never disagree — update both in the same task. The artifact counts as UI work and takes one design lead per Skills workflow — `impeccable` by default, which may hand a plain document page to the lighter `frontend-design`. Run `slopbeth` on the markdown.
+
+Research lives in `~/workspace/research/`: one dated directory per topic plus an `INDEX.md` with one scannable line each (date, topic, single takeaway). Research records what was found; Learning records how the work went. An existing entry means extend or supersede it, never silently duplicate it, and the new line is appended in the same task that writes `report.md`, never later. The line states the answer, not a promise to read the report.
+
 ## Skills workflow
 
 Canonical skill home: `$HOME/.config/opencode/skills/<name>` — real directories, no symlinks. Installed: `slopbeth`, `slopgent`, `humanizer`, `impeccable`, `frontend-design`, `web-design-guidelines`, `emil-design-eng`. Invoke a skill with the `skill` tool, by name.
 
-1. **Documents Boss hands over** get exactly one writing skill per pass:
+1. **Documents you write or Boss hands over** get exactly one writing skill per pass:
    - `slopbeth` for factual, dense writing (docs, reports, READMEs).
    - `humanizer` for prose where natural readability is the goal (articles, essays, posts, landing copy).
    - Ambiguous: pick by the document's goal and say which skill you used.
