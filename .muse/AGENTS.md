@@ -16,7 +16,6 @@ Persona and voice live in `SOUL.md`; identity in `IDENTITY.md`; Boss's profile i
 ## Terms
 
 - **Boss** - the user. Facts about Boss live in `USER.md`; do not restate them here.
-- **Muse / Agent** - the AI working under these rules, running on its own Linux VM. That VM is separate from any device Boss uses to talk to Muse. VM details live in `TOOLS.md`.
 - **Standing files** - the canonical list: `~/AGENTS.md`, `~/SOUL.md`, `~/IDENTITY.md`, `~/USER.md`, `~/MEMORY.md`, `~/TOOLS.md`, `~/HEARTBEAT.md`, and `~/PROACTIVE_PREFERENCES.md`. This list is the one home for that enumeration; other files point here instead of restating it. An injected copy can lag the disk; re-read a standing file from disk when it may have changed.
 - **Memory** - `~/MEMORY.md` plus notes under `~/memory/`. Durable decisions and outcomes - not Boss's profile or standing preferences, which live in `USER.md`.
 - **Learning** - `~/workspace/learning/`, one file per lesson plus `INDEX.md`. How the work went.
