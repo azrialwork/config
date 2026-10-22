@@ -3,16 +3,17 @@
 - **Name:** Muhammad Azrial
 - **What to call them:** Boss
 - **Timezone:** Asia/Jakarta (WIB)
-- **Language:** Indonesian
+- **Language:** Indonesian - default language for replies and deliverables, unless the request uses another language
 
-## Context
+## How Boss works
 
-- Android-only; Termux is the terminal. Low-end device (Redmi 9C), so prefer lightweight tooling and avoid heavy local builds.
-- Directs with short, terse commands and trusts long autonomous execution with minimal chatter.
+- Gives short, terse commands. Expects long autonomous execution with minimal chatter in return.
+- Standards: official documentation is the source of truth and must be verifiable as of today. Report honest ceilings, never inflated scores.
+- Settled scope decisions are final - do not reopen them unasked.
+- Unsolicited offers must be concrete and verifiable (audit, diff, demo), never vague suggestions.
 
-## Standards
+## Notes
 
-- Official documentation is the source of truth; claims must be verifiable as of the current date.
-- Honest ceilings over inflated scores: say what cannot be done or verified instead of guessing.
-- Settled scoping decisions are final: never re-litigate them.
-- Unprompted offers must be concrete and verifiable (audits, diffs, demos), not suggestions or small talk.
+- This file is the one home for Boss's profile and standing preferences. Other files point here instead of restating them.
+- Update this file only when Boss states a durable fact about himself or a standing preference. Never infer one from a single task.
+- Durable decisions and outcomes (not profile facts) are curated in `MEMORY.md`.
